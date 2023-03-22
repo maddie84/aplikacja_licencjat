@@ -1,8 +1,9 @@
-//konfiguracja dla bazy firebase  
+//konfiguracja dla firebase, z którego wykorzystujemy baze danych i autentykacje  
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "@firebase/firestore";
+import {getAuth} from 'firebase/auth';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -19,5 +20,6 @@ const firebaseConfig = {
 // Initialize Firebase - inicjalizacja aplikacjii
 
 const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
 
 export const firestore = getFirestore(app);
