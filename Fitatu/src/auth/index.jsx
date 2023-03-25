@@ -27,10 +27,9 @@ const Auth = () => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password).then(
-        (userCredential) => {
+        ({ user: { uid } }) => {
           // Signed in
           navigate("/home");
-          console.log(userCredential.user);
         }
       );
     } catch (err) {
@@ -38,7 +37,7 @@ const Auth = () => {
       alert(err.message);
     }
   };
-const register = async (e) => {
+  const register = async (e) => {
     e.preventDefault();
 
     if (validatePassword(password, confirmPassword)) {
@@ -52,7 +51,7 @@ const register = async (e) => {
         .catch((err) => setHasVerificationWentCorrect(false));
     }
   };
-return (
+  return (
     <>
       <div className={styles["form-wrapper"]}>
         <div className={styles["buttons-wrapper"]}>
@@ -84,7 +83,7 @@ return (
           <input
             id="email"
             name="email"
-placeholder="Email"
+            placeholder="Email"
             onChange={(event) => setEmail(event.target.value)}
             className={styles["email"]}
           />
