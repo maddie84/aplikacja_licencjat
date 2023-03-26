@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./index.module.scss";
 import { firestore, auth } from "../../../firebase-config/firestore";
 import { doc, setDoc } from "firebase/firestore";
+import { Context } from "../../../fit-context";
 
 const Form = ({ onClick }) => {
   const [sex, setSex] = useState("M");
@@ -9,6 +10,7 @@ const Form = ({ onClick }) => {
   const [weight, setWeight] = useState(0);
   const [lifestyle, setLifestyle] = useState("Siedzący");
   const [trainingGoal, setTrainingGoal] = useState("mass");
+  const { handleDietCalculations } = useContext(Context);
   const setUserData = async (e) => {
     e.preventDefault();
     await setDoc(doc(firestore, "users", auth.currentUser.uid), {
@@ -17,7 +19,10 @@ const Form = ({ onClick }) => {
       weight,
       lifestyle,
       trainingGoal,
-    }).then(() => onClick(2));
+    }).then(() => {
+      onClick(2);
+      handleDietCalculations(weight, lifestyle, trainingGoal);
+    });
   };
   return (
     <form

@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import { Context } from "../../fit-context";
 import Calculations from "./calculations";
 import Form from "./form";
 import styles from "./index.module.scss";
@@ -7,7 +6,6 @@ import Welcome from "./welcome";
 
 const WelcomeForm = () => {
   const [welcomeStep, setWelcomeStep] = useState(0);
-  const { userUID } = useContext(Context);
   console.log(welcomeStep);
   const getCurrentView = () => {
     switch (welcomeStep) {
