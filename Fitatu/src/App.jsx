@@ -3,6 +3,7 @@ import styles from "./index.module.scss";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./home";
 import FitContext from "./fit-context";
+import Meal from "./home/meal";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Auth />} />
             <Route exact path="/home" element={<Home />} />
+            <Route exact path="/home/meal" element={<Meal />} />
           </Routes>
         </Router>
       </FitContext>

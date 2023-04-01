@@ -1,0 +1,37 @@
+[
+  {
+    "name": "pomidor",
+    "carbs": 10,
+    "fats": 10,
+    "kcal": 10,
+    "proteins": 10
+  },
+  {
+    "name": "ziemniak",
+    "carbs": 20,
+    "fats": 20,
+    "kcal": 20,
+    "proteins": 20
+  },
+  {
+    "name": "banan",
+    "carbs": 30,
+    "fats": 30,
+    "kcal": 30,
+    "proteins": 30
+  },
+  {
+    "name": "kurczak",
+    "carbs": 40,
+    "fats": 40,
+    "kcal": 40,
+    "proteins": 40
+  },
+  {
+    "name": "ryz",
+    "carbs": 50,
+    "fats": 50,
+    "kcal": 50,
+    "proteins": 50
+  }
+]

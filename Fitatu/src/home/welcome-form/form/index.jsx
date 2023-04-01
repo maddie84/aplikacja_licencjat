@@ -20,8 +20,7 @@ const Form = ({ onClick }) => {
       lifestyle,
       trainingGoal,
     }).then(() => {
-      onClick(2);
-      handleDietCalculations(weight, lifestyle, trainingGoal);
+      handleDietCalculations(weight, lifestyle, trainingGoal, onClick);
     });
   };
   return (

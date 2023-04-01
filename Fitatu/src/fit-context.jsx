@@ -1,14 +1,19 @@
+import { doc, updateDoc } from "firebase/firestore";
 import React, { createContext, useState } from "react";
-import { firestore, auth } from "./firebase-config/firestore";
-import { doc, setDoc, updateDoc } from "firebase/firestore";
+import { auth, firestore } from "./firebase-config/firestore";
 export const Context = createContext({
   handleDietCalculations: () => {},
-  recomendations: {},
+  recommendations: {},
 });
 
 const FitContext = ({ children }) => {
-  const [recomendations, setRecomendations] = useState({});
-  const handleDietCalculations = async (weight, lifestyle, trainingGoal) => {
+  const [recommendations, setRecommendations] = useState({});
+  const handleDietCalculations = async (
+    weight,
+    lifestyle,
+    trainingGoal,
+    setNextPage
+  ) => {
     const isItMassGoal = trainingGoal === "mass";
     let multiplierDependsOfLifestyle;
     const factorOfMassOrReduction = isItMassGoal
@@ -44,7 +49,7 @@ const FitContext = ({ children }) => {
       : Math.trunc((kcal * 0.2) / 9); //w gramach
     const carbs = Math.trunc((kcal - (proteins * 4 + fats * 9)) / 4); //w gramach
     await updateDoc(doc(firestore, "users", auth.currentUser.uid), {
-      recomendations: {
+      recommendations: {
         kcal,
         factorOfMassOrReduction,
         proteins,
@@ -52,17 +57,18 @@ const FitContext = ({ children }) => {
         carbs,
       },
     }).then(() => {
-      setRecomendations({
+      setRecommendations({
         kcal,
         factorOfMassOrReduction,
         proteins,
         fats,
         carbs,
       });
+      setNextPage(2);
     });
   };
   return (
-    <Context.Provider value={{ handleDietCalculations, recomendations }}>
+    <Context.Provider value={{ handleDietCalculations, recommendations }}>
       {children}
     </Context.Provider>
   );
