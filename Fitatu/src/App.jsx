@@ -1,22 +1,23 @@
-import Auth from "./auth";
+import { Grommet } from "grommet";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { config } from "./grommet";
 import styles from "./index.module.scss";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./home";
-import FitContext from "./fit-context";
-import Meal from "./home/meal";
+import Wrapper from "./wrapper";
 
 function App() {
   return (
     <div className={styles["main-wrapper"]}>
-      <FitContext>
+      <Grommet theme={config}>
         <Router>
           <Routes>
-            <Route exact path="/" element={<Auth />} />
-            <Route exact path="/home" element={<Home />} />
-            <Route exact path="/home/meal" element={<Meal />} />
+            <Route exact path="/" element={<Wrapper />} />
+            <Route exact path="/przywitanie" element={<Wrapper />} />
+            <Route exact path="/kalkulator" element={<Wrapper />} />
+            <Route exact path="/twojProfil" element={<Wrapper />} />
+            <Route exact path="/historia" element={<Wrapper />} />
           </Routes>
         </Router>
-      </FitContext>
+      </Grommet>
     </div>
   );
 }

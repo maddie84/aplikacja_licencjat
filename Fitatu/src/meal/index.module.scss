@@ -1,0 +1,51 @@
+.meal-wrapper {
+  position: absolute;
+  left: 50%;
+  translate: -50%;
+  width: 100%;
+  height: calc(100vh - 80px);
+  overflow: hidden;
+
+  .meals-list {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    margin-left: 20px;
+
+    .meal-element {
+      display: flex;
+      flex-direction: column;
+
+      .products-list {
+        height: 300px;
+        overflow-y: scroll;
+
+        tr {
+          background-color: var(--color-fit-dark-pink);
+        }
+
+        thead {
+          font-weight: 700;
+        }
+        span {
+          font-weight: lighter;
+        }
+      }
+      .meal-name {
+        line-height: 48px;
+        font-weight: 900;
+      }
+      .eaten-products-list {
+        display: flex;
+        flex-direction: column;
+        height: 300px;
+        overflow-y: scroll;
+        translate: 0 52px;
+
+        .eaten-products-header {
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}

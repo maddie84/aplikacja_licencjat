@@ -1,0 +1,7 @@
+.nav {
+  border-bottom: 4px solid var(--color-fit-white);
+
+  .navigation-text::first-letter {
+    text-transform: uppercase;
+  }
+}

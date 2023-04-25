@@ -1,0 +1,34 @@
+.daily-goal {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  .proteins-details {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0;
+    margin: 0 22px;
+    width: 100%;
+
+    .daily-goal-element {
+      flex-grow: 1;
+
+      div {
+        flex-grow: 1;
+      }
+
+      .bar-text {
+        position: absolute;
+        z-index: 1;
+      }
+    }
+  }
+
+  .daily-detail-text {
+    font-weight: 600;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+}
